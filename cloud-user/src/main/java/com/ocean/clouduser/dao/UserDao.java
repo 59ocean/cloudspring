@@ -1,5 +1,6 @@
 package com.ocean.clouduser.dao;
 
+import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.ocean.clouduser.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ import java.util.Map;
  */
 @Mapper
 @Service
-public interface UserDao {
+public interface UserDao extends BaseMapper<User>{
 
 	User get(Long userId);
 	
