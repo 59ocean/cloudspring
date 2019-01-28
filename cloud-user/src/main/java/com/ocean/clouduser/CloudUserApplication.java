@@ -21,9 +21,6 @@ import javax.sql.DataSource;
 @EnableEurekaClient
 @EnableSwagger2
 public class CloudUserApplication {
-
-
-
 	public static void main(String[] args) {
 		SpringApplication.run(CloudUserApplication.class, args);
 	}
