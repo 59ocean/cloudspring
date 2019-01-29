@@ -10,8 +10,9 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>cloud-admin</module>
+        <module>cloud-user</module>
         <module>cloud-eureka</module>
+        <module>cloud-common</module>
     </modules>
     <repositories>
         <repository>
