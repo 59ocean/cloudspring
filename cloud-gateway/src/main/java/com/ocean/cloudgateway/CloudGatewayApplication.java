@@ -11,11 +11,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @EnableFeignClients
 @EnableZuulProxy
 @EnableEurekaClient
 @SpringBootApplication
+@EnableSwagger2
 public class CloudGatewayApplication {
 
 	public static void main(String[] args) {

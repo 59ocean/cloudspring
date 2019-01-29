@@ -1,4 +1,4 @@
-package com.ocean.cloudgateway;
+package com.ocean.cloudcommon.pojo;
 
 import java.io.Serializable;
 

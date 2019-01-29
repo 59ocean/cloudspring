@@ -1,7 +1,7 @@
-package com.ocean.cloudgateway.context;
+package com.ocean.cloudcommon.context;
 
 
-import com.ocean.cloudgateway.constants.CommonConstants;
+import com.ocean.cloudcommon.constants.CommonConstants;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,7 +1,7 @@
 package com.ocean.cloudgateway.intercepter;
 
-import com.ocean.cloudgateway.constants.CommonConstants;
-import com.ocean.cloudgateway.context.FilterContextHandler;
+import com.ocean.cloudcommon.constants.CommonConstants;
+import com.ocean.cloudcommon.context.FilterContextHandler;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
 import org.slf4j.Logger;

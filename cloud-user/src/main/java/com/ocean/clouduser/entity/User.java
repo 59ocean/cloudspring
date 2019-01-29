@@ -11,7 +11,7 @@ public class User implements Serializable {
     private static final long serialVersionUID = 1L;
 
     //
-    private Long userId;
+    private Long id;
     // 用户名
     private String username;
     // 用户真实姓名
@@ -55,18 +55,12 @@ public class User implements Serializable {
     //所在地区
     private String district;
 
-    /**
-     * 设置：
-     */
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    /**
-     * 获取：
-     */
-    public Long getUserId() {
-        return userId;
+    public Long getId() {
+        return id;
     }
 
     /**
@@ -281,7 +275,7 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "UserDO{" +
-                "userId=" + userId +
+                "userId=" + id +
                 ", username='" + username + '\'' +
                 ", name='" + name + '\'' +
                 ", password='" + password + '\'' +

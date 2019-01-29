@@ -1,7 +1,7 @@
 package com.ocean.cloudcommon.utils;
 
-import com.bootdo.clouddocommon.constants.CommonConstants;
-import com.bootdo.clouddocommon.dto.UserToken;
+import com.ocean.cloudcommon.constants.CommonConstants;
+import com.ocean.cloudcommon.pojo.UserToken;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

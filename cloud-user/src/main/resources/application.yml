@@ -22,7 +22,7 @@ spring:
     #data: classpath:/db/data-h2.sql
     url: jdbc:mysql://106.14.116.177:3306/clouddo?useUnicode=true&characterEncoding=utf8
     username: root
-    password: root
+    password: 123456
   devtools:
     restart:
       enabled: true

@@ -1,10 +1,10 @@
 package com.ocean.cloudgateway.intercepter;
 
 
-import com.ocean.cloudgateway.JwtUtils;
-import com.ocean.cloudgateway.UserToken;
-import com.ocean.cloudgateway.constants.CommonConstants;
-import com.ocean.cloudgateway.context.FilterContextHandler;
+import com.ocean.cloudcommon.constants.CommonConstants;
+import com.ocean.cloudcommon.context.FilterContextHandler;
+import com.ocean.cloudcommon.pojo.UserToken;
+import com.ocean.cloudcommon.utils.JwtUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;

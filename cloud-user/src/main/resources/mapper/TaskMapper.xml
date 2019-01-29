@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ocean.clouduser.dao.TaskMapper" >
+  <resultMap id="BaseResultMap" type="com.ocean.clouduser.entity.Task" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="cron_expression" property="cronExpression" jdbcType="VARCHAR" />
+    <result column="method_name" property="methodName" jdbcType="VARCHAR" />
+    <result column="is_concurrent" property="isConcurrent" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="bean_class" property="beanClass" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="job_status" property="jobStatus" jdbcType="VARCHAR" />
+    <result column="job_group" property="jobGroup" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="spring_bean" property="springBean" jdbcType="VARCHAR" />
+    <result column="job_name" property="jobName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, cron_expression, method_name, is_concurrent, description, update_by, bean_class, 
+    create_date, job_status, job_group, update_date, create_by, spring_bean, job_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_task
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from sys_task
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ocean.clouduser.entity.Task" >
+    insert into sys_task (id, cron_expression, method_name, 
+      is_concurrent, description, update_by, 
+      bean_class, create_date, job_status, 
+      job_group, update_date, create_by, 
+      spring_bean, job_name)
+    values (#{id,jdbcType=BIGINT}, #{cronExpression,jdbcType=VARCHAR}, #{methodName,jdbcType=VARCHAR}, 
+      #{isConcurrent,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR}, 
+      #{beanClass,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{jobStatus,jdbcType=VARCHAR}, 
+      #{jobGroup,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, 
+      #{springBean,jdbcType=VARCHAR}, #{jobName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ocean.clouduser.entity.Task" >
+    insert into sys_task
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="cronExpression != null" >
+        cron_expression,
+      </if>
+      <if test="methodName != null" >
+        method_name,
+      </if>
+      <if test="isConcurrent != null" >
+        is_concurrent,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="updateBy != null" >
+        update_by,
+      </if>
+      <if test="beanClass != null" >
+        bean_class,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="jobStatus != null" >
+        job_status,
+      </if>
+      <if test="jobGroup != null" >
+        job_group,
+      </if>
+      <if test="updateDate != null" >
+        update_date,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="springBean != null" >
+        spring_bean,
+      </if>
+      <if test="jobName != null" >
+        job_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="cronExpression != null" >
+        #{cronExpression,jdbcType=VARCHAR},
+      </if>
+      <if test="methodName != null" >
+        #{methodName,jdbcType=VARCHAR},
+      </if>
+      <if test="isConcurrent != null" >
+        #{isConcurrent,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null" >
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="beanClass != null" >
+        #{beanClass,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jobStatus != null" >
+        #{jobStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="jobGroup != null" >
+        #{jobGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="springBean != null" >
+        #{springBean,jdbcType=VARCHAR},
+      </if>
+      <if test="jobName != null" >
+        #{jobName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ocean.clouduser.entity.Task" >
+    update sys_task
+    <set >
+      <if test="cronExpression != null" >
+        cron_expression = #{cronExpression,jdbcType=VARCHAR},
+      </if>
+      <if test="methodName != null" >
+        method_name = #{methodName,jdbcType=VARCHAR},
+      </if>
+      <if test="isConcurrent != null" >
+        is_concurrent = #{isConcurrent,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null" >
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="beanClass != null" >
+        bean_class = #{beanClass,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jobStatus != null" >
+        job_status = #{jobStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="jobGroup != null" >
+        job_group = #{jobGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="springBean != null" >
+        spring_bean = #{springBean,jdbcType=VARCHAR},
+      </if>
+      <if test="jobName != null" >
+        job_name = #{jobName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ocean.clouduser.entity.Task" >
+    update sys_task
+    set cron_expression = #{cronExpression,jdbcType=VARCHAR},
+      method_name = #{methodName,jdbcType=VARCHAR},
+      is_concurrent = #{isConcurrent,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      bean_class = #{beanClass,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      job_status = #{jobStatus,jdbcType=VARCHAR},
+      job_group = #{jobGroup,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      spring_bean = #{springBean,jdbcType=VARCHAR},
+      job_name = #{jobName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

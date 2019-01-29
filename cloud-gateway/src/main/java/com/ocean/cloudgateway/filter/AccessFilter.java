@@ -3,10 +3,13 @@ package com.ocean.cloudgateway.filter;
 
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
+import com.ocean.cloudcommon.constants.CommonConstants;
+import com.ocean.cloudcommon.context.FilterContextHandler;
+import com.ocean.cloudcommon.pojo.UserToken;
+import com.ocean.cloudcommon.utils.JSONUtils;
+import com.ocean.cloudcommon.utils.JwtUtils;
 import com.ocean.cloudgateway.*;
 import com.ocean.cloudgateway.admin.MenuService;
-import com.ocean.cloudgateway.constants.CommonConstants;
-import com.ocean.cloudgateway.context.FilterContextHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;

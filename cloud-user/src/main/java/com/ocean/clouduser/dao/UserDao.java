@@ -16,7 +16,7 @@ import java.util.Map;
  */
 @Mapper
 @Service
-public interface UserDao extends BaseMapper<User>{
+public interface UserDao{
 
 	User get(Long userId);
 	
