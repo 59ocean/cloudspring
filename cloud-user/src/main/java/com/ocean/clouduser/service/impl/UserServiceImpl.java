@@ -49,7 +49,8 @@ public class UserServiceImpl extends BaseServiceImpl<UserDao,User> implements Us
 		if(StringUtils.isNotBlank(query.getUsername())){
 			entityWrapper.like("username","%"+query.getUsername()+"%");
 		}
-		return page.setRecords(userDao.selectPage(page,entityWrapper));
+		page.setRecords(userDao.selectPage(page,entityWrapper));
+		return page;
 	}
 
 

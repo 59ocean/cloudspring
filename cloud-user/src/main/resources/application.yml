@@ -33,6 +33,11 @@ spring:
     restart:
       enabled: true
       additional-paths: src/main/java
+  redis:
+    host: 106.14.116.177
+    port: 6379
+    password: root
+
 
 
 #mybatis

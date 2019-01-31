@@ -6,7 +6,10 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.SimpleFormatter;
 
 /**
  * @author bootdo 1992lcg@163.com
@@ -32,4 +35,10 @@ public class JwtUtils {
                 .getBody();
         return new UserTokenDto(claims.getSubject(), claims.get(CommonConstants.CONTEXT_USER_ID).toString(),claims.get(CommonConstants.CONTEXT_NAME).toString());
     }
+
+    public static void main(String[] args) {
+        DateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD HH:mm:ss");
+        System.out.println(dateFormat.format(new Date(System.currentTimeMillis()+(60*60*1000)/2)));
+    }
+
 }

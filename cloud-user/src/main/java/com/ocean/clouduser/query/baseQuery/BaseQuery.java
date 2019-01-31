@@ -6,9 +6,9 @@ import java.io.Serializable;
 
 public class BaseQuery implements Serializable {
     @ApiModelProperty(name="pageNumber",value="当前页码")
-    private int pageNumber;
+    private int pageNumber =1;
     @ApiModelProperty(name="limit",value="限制数量")
-    private int limit;
+    private int limit =10;
 
     public int getPageNumber() {
         return pageNumber;

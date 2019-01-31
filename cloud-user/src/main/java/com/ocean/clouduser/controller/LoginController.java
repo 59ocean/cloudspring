@@ -7,20 +7,24 @@ import com.ocean.cloudcommon.utils.R;
 import com.ocean.clouduser.dto.LoginDTO;
 import com.ocean.clouduser.entity.User;
 import com.ocean.clouduser.entity.UserToken;
+import com.ocean.clouduser.service.RedisHelper;
 import com.ocean.clouduser.service.UserService;
 import com.ocean.clouduser.utils.MD5Utils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.TimeoutUtils;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 @RequestMapping("/v1/user")
 @RestController
@@ -29,8 +33,10 @@ import java.util.Map;
 public class LoginController extends BaseController {
     @Autowired
     UserService userService;
-
-
+    @Autowired
+    RedisHelper redisHelper;
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
     @PostMapping("/login")
     @ApiOperation(value = "用户登录")
     public R login(@RequestBody LoginDTO loginDTO){
@@ -50,13 +56,23 @@ public class LoginController extends BaseController {
         UserTokenDto userTokenDto = new UserTokenDto(user.getUsername(),user.getId().toString(),user.getName());
         String token = "";
         try {
-            token = JwtUtils.generateToken(userTokenDto,2*60*60*1000);
+            token = JwtUtils.generateToken(userTokenDto,60*60*1000);
+            ValueOperations valueOperations = stringRedisTemplate.opsForValue();
+            valueOperations.set("token"+token,token,(1000*60*60)/2, TimeUnit.SECONDS);
+            System.out.println(valueOperations.get("token"+token));
         } catch (Exception e) {
             e.printStackTrace();
         }
         return R.ok("登陆成功！")
                 .put("user",user)
                 .put("token",token);
+    }
+
+    @GetMapping("/logout")
+    R logout(HttpServletRequest request, HttpServletResponse response) {
+        String accessToken = request.getHeader(CommonConstants.CONTEXT_TOKEN);
+        redisHelper.remove("token"+accessToken);
+        return R.ok();
     }
 
 
