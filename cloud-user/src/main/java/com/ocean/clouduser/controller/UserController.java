@@ -4,7 +4,10 @@ package com.ocean.clouduser.controller;
 
 
 import com.alibaba.fastjson.JSON;
+import com.baomidou.mybatisplus.plugins.Page;
+import com.ocean.cloudcommon.utils.R;
 import com.ocean.clouduser.entity.User;
+import com.ocean.clouduser.query.UserQuery;
 import com.ocean.clouduser.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -52,6 +55,11 @@ public class UserController extends BaseController {
 		map.put("name","abc");
 		map.put("user",user);
 		return JSON.toJSON(map);
+	}
+	@GetMapping("/list")
+	@ApiOperation(value = "用户分页")
+	public Page getUserPage(UserQuery query){
+		return userService.pageByMap(query);
 	}
 
 

@@ -1,4 +1,4 @@
-package com.ocean.cloudgateway.filter;
+package com.ocean.cloudzuul.filter;
 
 
 import com.netflix.zuul.ZuulFilter;
@@ -8,16 +8,18 @@ import com.ocean.cloudcommon.context.FilterContextHandler;
 import com.ocean.cloudcommon.dto.UserTokenDto;
 import com.ocean.cloudcommon.utils.JSONUtils;
 import com.ocean.cloudcommon.utils.JwtUtils;
-import com.ocean.cloudgateway.*;
-import com.ocean.cloudgateway.admin.MenuService;
+import com.ocean.cloudcommon.utils.R;
+import com.ocean.cloudzuul.MenuDTO;
+import com.ocean.cloudzuul.admin.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 
 /**
@@ -76,6 +78,7 @@ public class AccessFilter extends ZuulFilter {
             return null;
         }
         String accessToken = request.getHeader(CommonConstants.CONTEXT_TOKEN);
+        Map<String,Object> params = getParams();
         if(null == accessToken || accessToken == ""){
             accessToken = request.getParameter(CommonConstants.TOKEN);
         }
@@ -145,5 +148,18 @@ public class AccessFilter extends ZuulFilter {
             }
         }
         return flag;
+    }
+    protected Map<String,Object> getParams() {
+        Map<String,Object> params = new HashMap<String, Object>();
+        Enumeration<String> keys = getRequest().getParameterNames();
+        while(keys.hasMoreElements()){
+            String key = keys.nextElement();
+            String value = getRequest().getParameter(key);
+            params.put(key, value);
+        }
+        return params;
+    }
+    public HttpServletRequest getRequest() {
+        return ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
     }
 }

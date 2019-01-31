@@ -1,6 +1,5 @@
-package com.ocean.cloudgateway;
+package com.ocean.cloudzuul;
 
-import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.springframework.cloud.netflix.zuul.filters.Route;
 import org.springframework.cloud.netflix.zuul.filters.RouteLocator;
 import org.springframework.context.annotation.Primary;

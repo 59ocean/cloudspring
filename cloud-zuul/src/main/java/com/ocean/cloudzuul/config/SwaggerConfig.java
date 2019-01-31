@@ -1,4 +1,4 @@
-package com.ocean.cloudgateway.config;
+package com.ocean.cloudzuul.config;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

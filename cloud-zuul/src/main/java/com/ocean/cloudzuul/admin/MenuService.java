@@ -1,8 +1,8 @@
-package com.ocean.cloudgateway.admin;
+package com.ocean.cloudzuul.admin;
 
 
-import com.ocean.cloudgateway.MenuDTO;
-import com.ocean.cloudgateway.intercepter.FeignIntercepter;
+import com.ocean.cloudzuul.MenuDTO;
+import com.ocean.cloudzuul.intercepter.FeignIntercepter;
 import feign.Headers;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,4 +1,4 @@
-package com.ocean.cloudgateway.intercepter;
+package com.ocean.cloudzuul.intercepter;
 
 
 import com.ocean.cloudcommon.constants.CommonConstants;

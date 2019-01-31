@@ -1,4 +1,4 @@
-package com.ocean.cloudgateway;
+package com.ocean.cloudzuul;
 
 import java.io.Serializable;
 
