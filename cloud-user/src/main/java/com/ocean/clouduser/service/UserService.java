@@ -10,9 +10,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-@Service
-public interface UserService {
-	User get(Long id);
+public interface UserService extends BaseService<User> {
+    List<User> listByProperties(Map<String, Object> params);
+
+
 
 	/*List<User> list(Map<String, Object> map);
 

@@ -5,7 +5,7 @@ import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.ocean.cloudcommon.constants.CommonConstants;
 import com.ocean.cloudcommon.context.FilterContextHandler;
-import com.ocean.cloudcommon.pojo.UserToken;
+import com.ocean.cloudcommon.dto.UserTokenDto;
 import com.ocean.cloudcommon.utils.JSONUtils;
 import com.ocean.cloudcommon.utils.JwtUtils;
 import com.ocean.cloudgateway.*;
@@ -29,7 +29,7 @@ public class AccessFilter extends ZuulFilter {
     MenuService menuService;
 
 
-    private String ignorePath = "/api-admin/login";
+    private String ignorePath = "/v1/user/login";
 
     /**
      * pre：可以在请求被路由之前调用。
@@ -84,7 +84,7 @@ public class AccessFilter extends ZuulFilter {
             return null;
         }
         try {
-            UserToken userToken = JwtUtils.getInfoFromToken(accessToken);
+            UserTokenDto userToken = JwtUtils.getInfoFromToken(accessToken);
             String name= userToken.getName();
         } catch (Exception e) {
             setFailedRequest(R.error401(), 200);

@@ -1,7 +1,7 @@
 package com.ocean.cloudcommon.utils;
 
 import com.ocean.cloudcommon.constants.CommonConstants;
-import com.ocean.cloudcommon.pojo.UserToken;
+import com.ocean.cloudcommon.dto.UserTokenDto;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -13,7 +13,7 @@ import java.util.Date;
  * @version V1.0
  */
 public class JwtUtils {
-    public static String generateToken(UserToken userToken, int expire) throws Exception {
+    public static String generateToken(UserTokenDto userToken, int expire) throws Exception {
         String token = Jwts.builder()
                 .setSubject(userToken.getUsername())
                 .claim(CommonConstants.CONTEXT_USER_ID, userToken.getUserId())
@@ -26,10 +26,10 @@ public class JwtUtils {
     }
 
 
-    public static UserToken getInfoFromToken(String token) throws Exception {
+    public static UserTokenDto getInfoFromToken(String token) throws Exception {
         Claims claims = Jwts.parser()
                 .setSigningKey(CommonConstants.JWT_PRIVATE_KEY).parseClaimsJws(token)
                 .getBody();
-        return new UserToken(claims.getSubject(), claims.get(CommonConstants.CONTEXT_USER_ID).toString(),claims.get(CommonConstants.CONTEXT_NAME).toString());
+        return new UserTokenDto(claims.getSubject(), claims.get(CommonConstants.CONTEXT_USER_ID).toString(),claims.get(CommonConstants.CONTEXT_NAME).toString());
     }
 }

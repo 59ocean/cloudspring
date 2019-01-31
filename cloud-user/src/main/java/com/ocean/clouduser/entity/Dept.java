@@ -1,5 +1,7 @@
 package com.ocean.clouduser.entity;
 
+import com.ocean.clouduser.entity.base.BaseEntity;
+
 import java.io.Serializable;
 
 
@@ -10,7 +12,7 @@ import java.io.Serializable;
  * @email 1992lcg@163.com
  * @date 2017-09-27 14:28:36
  */
-public class Dept implements Serializable {
+public class Dept extends BaseEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	//

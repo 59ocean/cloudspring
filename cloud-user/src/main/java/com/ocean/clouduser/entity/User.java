@@ -1,13 +1,15 @@
 package com.ocean.clouduser.entity;
 
+import com.baomidou.mybatisplus.annotations.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.ocean.clouduser.entity.base.BaseEntity;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-
-public class User implements Serializable {
+@TableName("sys_user")
+public class User extends BaseEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
     //
@@ -21,7 +23,7 @@ public class User implements Serializable {
     // 部门
     private Long deptId;
 
-    private String deptName;
+    //private String deptName;
     // 邮箱
     private String email;
     // 手机号
@@ -35,7 +37,7 @@ public class User implements Serializable {
     // 修改时间
     private Date gmtModified;
     //角色
-    private List<Long> roleIds;
+    //private List<Long> roleIds;
     //性别
     private Long sex;
     //出身日期
@@ -108,13 +110,13 @@ public class User implements Serializable {
         this.deptId = deptId;
     }
 
-    public String getDeptName() {
+   /* public String getDeptName() {
         return deptName;
     }
 
     public void setDeptName(String deptName) {
         this.deptName = deptName;
-    }
+    }*/
 
     /**
      * 设置：邮箱
@@ -200,13 +202,13 @@ public class User implements Serializable {
         return gmtModified;
     }
 
-    public List<Long> getroleIds() {
-        return roleIds;
-    }
-
-    public void setroleIds(List<Long> roleIds) {
-        this.roleIds = roleIds;
-    }
+//    public List<Long> getroleIds() {
+//        return roleIds;
+//    }
+//
+//    public void setroleIds(List<Long> roleIds) {
+//        this.roleIds = roleIds;
+//    }
 
     public Long getSex() {
         return sex;
@@ -280,14 +282,14 @@ public class User implements Serializable {
                 ", name='" + name + '\'' +
                 ", password='" + password + '\'' +
                 ", deptId=" + deptId +
-                ", deptName='" + deptName + '\'' +
+              //  ", deptName='" + deptName + '\'' +
                 ", email='" + email + '\'' +
                 ", mobile='" + mobile + '\'' +
                 ", status=" + status +
                 ", userIdCreate=" + userIdCreate +
                 ", gmtCreate=" + gmtCreate +
                 ", gmtModified=" + gmtModified +
-                ", roleIds=" + roleIds +
+                //", roleIds=" + roleIds +
                 ", sex=" + sex +
                 ", birth=" + birth +
                 ", picId=" + picId +

@@ -19,18 +19,21 @@ import java.util.*;
  */
 @Transactional(rollbackFor = Exception.class)
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends BaseServiceImpl<UserDao,User> implements UserService {
 	@Autowired
-	UserDao userMapper;
+	UserDao userDao;
 
 
 	private static final Logger logger = LoggerFactory.getLogger(UserService.class);
 
 
+
+
 	@Override
-	public User get(Long id) {
-		return userMapper.get(id);
+	public List<User> listByProperties(Map<String, Object> params){
+		return userDao.selectByMap(params);
 	}
+
 
 	/*@Override
 	public List<User> list(Map<String, Object> map) {

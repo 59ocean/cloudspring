@@ -3,7 +3,7 @@ package com.ocean.cloudgateway.intercepter;
 
 import com.ocean.cloudcommon.constants.CommonConstants;
 import com.ocean.cloudcommon.context.FilterContextHandler;
-import com.ocean.cloudcommon.pojo.UserToken;
+import com.ocean.cloudcommon.dto.UserTokenDto;
 import com.ocean.cloudcommon.utils.JwtUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +18,7 @@ public class AuthIntercepter extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String token = request.getHeader(CommonConstants.CONTEXT_TOKEN);
-        UserToken userToken = JwtUtils.getInfoFromToken(token);
+        UserTokenDto userToken = JwtUtils.getInfoFromToken(token);
         FilterContextHandler.setToken(token);
         logger.info("------设置token"+Thread.currentThread().getId());
         FilterContextHandler.setUsername(userToken.getUsername());

@@ -1,4 +1,4 @@
-package com.ocean.cloudcommon.pojo;
+package com.ocean.cloudcommon.dto;
 
 import java.io.Serializable;
 
@@ -6,10 +6,10 @@ import java.io.Serializable;
  * @author bootdo 1992lcg@163.com
  * @version V1.0
  */
-public class UserToken implements Serializable{
+public class UserTokenDto implements Serializable{
     private static final long serialVersionUID = 1L;
 
-    public UserToken(String username, String userId, String name) {
+    public UserTokenDto(String username, String userId, String name) {
         this.userId = userId;
         this.username = username;
         this.name = name;

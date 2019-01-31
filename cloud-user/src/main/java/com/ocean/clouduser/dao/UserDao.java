@@ -15,8 +15,7 @@ import java.util.Map;
  * @date 2017-10-03 09:45:11
  */
 @Mapper
-@Service
-public interface UserDao{
+public interface UserDao extends BaseMapper<User>{
 
 	User get(Long userId);
 	

@@ -1,8 +1,10 @@
 package com.ocean.clouduser.entity;
 
+import com.ocean.clouduser.entity.base.BaseEntity;
+
 import java.util.Date;
 
-public class UserToken {
+public class UserToken extends BaseEntity {
     private Long userId;
 
     private String token;

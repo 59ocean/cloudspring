@@ -1,8 +1,10 @@
 package com.ocean.clouduser.entity;
 
+import com.ocean.clouduser.entity.base.BaseEntity;
+
 import java.util.Date;
 
-public class Log {
+public class Log extends BaseEntity {
     private Long id;
 
     private Long userId;
