@@ -6,17 +6,22 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="cloud-cms" />
+        <module name="cloud-common" />
         <module name="cloud-eureka" />
-        <module name="cloud-gateway" />
         <module name="cloud-user" />
+        <module name="cloud-zuul" />
+        <module name="gateway" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="1.7">
+    <bytecodeTargetLevel target="1.8">
       <module name="cloud" target="1.5" />
-      <module name="cloud-admin" target="1.8" />
+      <module name="cloud-cms" target="1.8" />
+      <module name="cloud-common" target="1.8" />
       <module name="cloud-eureka" target="1.8" />
       <module name="cloud-gateway" target="1.8" />
       <module name="cloud-user" target="1.8" />
+      <module name="cloud-zuul" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
