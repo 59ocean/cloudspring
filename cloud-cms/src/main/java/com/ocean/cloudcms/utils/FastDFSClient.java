@@ -1,6 +1,6 @@
 package com.ocean.cloudcms.utils;
 
-import com.ocean.cloudcms.Dto.FastDFSFileEntity;
+import com.ocean.cloudcms.dto.FastDFSFileEntity;
 import com.ocean.cloudcms.conn.TrackerServerPool;
 import org.csource.common.NameValuePair;
 import org.csource.fastdfs.*;
@@ -12,8 +12,8 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * @Author: maoqitian
- * @Date: 2018/10/29 0029 9:30
+ * @Author: chenhy
+ * @Date: 2018/2/1 0029 9:30
  * @Description: FastDFS 操作类
  */
  public class FastDFSClient {

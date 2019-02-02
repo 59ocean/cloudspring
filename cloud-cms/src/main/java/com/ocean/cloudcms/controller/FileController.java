@@ -1,9 +1,11 @@
 package com.ocean.cloudcms.controller;
 
-import com.ocean.cloudcms.Dto.FastDFSFileEntity;
+import com.ocean.cloudcms.dto.FastDFSFileEntity;
 import com.ocean.cloudcms.exception.ErrorCode;
 import com.ocean.cloudcms.exception.FastDFSException;
 import com.ocean.cloudcms.utils.FastDFSClient;
+import com.ocean.cloudcms.utils.FileUtils;
+import com.ocean.cloudcms.utils.ImageCompressUtil;
 import com.ocean.cloudcommon.utils.R;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -13,10 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 
 @RestController
 @RequestMapping("/v1/cms/file")
@@ -64,11 +63,16 @@ public class FileController {
         String ext=fileName.substring(fileName.lastIndexOf(".")+1);
         byte[] file_buff=null;
         InputStream inputStream = file.getInputStream();
-        if(inputStream!=null){
+        try {
+            file_buff = ImageCompressUtil.setWatermark(inputStream,true,"sjsf.png",900,500);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        /*if(inputStream!=null){
             int available = inputStream.available();
             file_buff=new byte[available];
             inputStream.read(file_buff);
-        }
+        }*/
         inputStream.close();
         FastDFSFileEntity fastDFSFileEntity=new FastDFSFileEntity(fileName,file_buff,ext);
         try {
@@ -101,6 +105,13 @@ public class FileController {
             byte[] bytes = null;
                 //bytes = FastDFSClient.getInstance().downFile2("group1/M00/00/00/rBMwl1xUBViACpsfAAKZSVBf_dc075.jpg","rBMwl1xUBViACpsfAAKZSVBf_dc075.jpg");
                 bytes = FastDFSClient.getInstance().downFile2(groupName,remoteFileName);
+            //File syfile= FileUtils.byteToFile(bytes,"F://ss.png");
+            //bytes = FileUtils.file2byte(syfile);
+            InputStream inputStream = FastDFSClient.getInstance().downFile(groupName,remoteFileName);
+            File syfile = new File("F://ss.png");
+            FileUtils.inputstreamtofile(inputStream,syfile);
+            System.out.println(syfile.getPath());
+            System.out.println(syfile.length());
             response.setContentType("application/octet-stream;charset=UTF-8");
             // Content-Disposition
             response.setHeader("Content-Disposition",

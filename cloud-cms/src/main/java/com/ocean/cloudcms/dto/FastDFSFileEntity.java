@@ -1,4 +1,4 @@
-package com.ocean.cloudcms.Dto;
+package com.ocean.cloudcms.dto;
 
 /**
  * @Author: maoqitian

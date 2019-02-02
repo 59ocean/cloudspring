@@ -108,6 +108,12 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-netflix-eureka-server</artifactId>
 		</dependency>
+		<!--使用thumbnailator依赖包(图片压缩)-->
+		<dependency>
+			<groupId>net.coobird</groupId>
+			<artifactId>thumbnailator</artifactId>
+			<version>0.4.2</version>
+		</dependency>
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
