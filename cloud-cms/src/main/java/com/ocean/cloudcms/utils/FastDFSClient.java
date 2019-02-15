@@ -101,8 +101,10 @@ import java.io.InputStream;
         return null;
     }
 
-    public InputStream downFile(String groupName, String remoteFileName) {
+    public InputStream downFile(String url) {
         try {
+            String groupName = url.substring(0,url.indexOf("/"));
+            String remoteFileName = url.substring(url.indexOf("/")+1);
             StorageClient storageClient = getTrackerClient();
             byte[] fileByte = storageClient.download_file(groupName, remoteFileName);
             InputStream ins = new ByteArrayInputStream(fileByte);
@@ -114,8 +116,10 @@ import java.io.InputStream;
         }
         return null;
     }
-    public byte[] downFile2(String groupName, String remoteFileName) {
+    public byte[] downFile2(String url) {
         try {
+            String groupName = url.substring(0,url.indexOf("/"));
+            String remoteFileName = url.substring(url.indexOf("/")+1);
             StorageClient storageClient = getTrackerClient();
             byte[] fileByte = storageClient.download_file(groupName, remoteFileName);
             return fileByte;
@@ -186,4 +190,12 @@ import java.io.InputStream;
         return trackerServerPool.borrowObject();
     }
 
+
+    public static void main(String[] args) {
+        String url = "group1/M00/00/00/rBMwl1xjxXCAdIZEAADu7Gi0GeE120.jpg";
+        String groupName = url.substring(0,url.indexOf("/"));
+        String remoteFileName = url.substring(url.indexOf("/")+1);
+        System.out.println(groupName);
+        System.out.println(remoteFileName);
+    }
 }

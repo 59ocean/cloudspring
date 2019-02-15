@@ -73,14 +73,14 @@ public class ImageCompressUtil {
     /**
      * 设置水印
      */
-    public static byte[] setWatermark(InputStream inputStream,boolean needWatermark, String courseFile, int width, int height) throws Exception {
+    public static byte[] setWatermark(InputStream inputStream,boolean needWatermark, int width, int height) throws Exception {
         // 在内存当中加水印
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         if (needWatermark) {
             //获取水印图
             String groupName = "group1";
-            String remoteFileName = "M00/00/00/rBMwl1xVEnSAW9EdAAAQK3b3kGc988.png";
-            InputStream syInputStream = FastDFSClient.getInstance().downFile(groupName,remoteFileName);
+            String syurl = "group1/M00/00/00/rBMwl1xVEnSAW9EdAAAQK3b3kGc988.png";
+            InputStream syInputStream = FastDFSClient.getInstance().downFile(syurl);
             //File path = new File()
             File watermark = new File("F://sy.png");
             FileUtils.inputstreamtofile(syInputStream,watermark);

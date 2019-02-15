@@ -44,6 +44,21 @@ public class CheckFileUtil {
 		}
 	}
 
+	/**
+	 * 判断是不是图片
+	 * @param fileType
+	 * @return
+	 */
+	public static boolean isImage(String fileType){
+		try {
+			checkFileType("picture",fileType);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
 
 	private static void getVideoFileType() {
 		// Real Audio (ram)

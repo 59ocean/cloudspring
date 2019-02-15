@@ -33,6 +33,12 @@ spring:
     restart:
       enabled: true
       additional-paths: src/main/java
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 1Mb
+      max-request-size: 100Mb
+
 
 
 
@@ -65,3 +71,4 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
     cache-enabled: false
+
