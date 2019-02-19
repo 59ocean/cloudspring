@@ -1,6 +1,7 @@
 package com.ocean.cloudcms;
 
 import com.ocean.cloudcms.config.FileUploadProperty;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -17,6 +18,7 @@ import javax.servlet.MultipartConfigElement;
 @EnableEurekaClient
 @EnableSwagger2
 @Configuration
+@MapperScan("com.ocean.cloudcms.dao")
 @EnableConfigurationProperties({ FileUploadProperty.class})
 public class CloudCmsApplication {
 

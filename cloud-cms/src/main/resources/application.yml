@@ -3,7 +3,7 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8001/eureka/
+      defaultZone: http://106.14.116.177:8001/eureka/
   instance:
       hostname: ${spring.cloud.client.ip-address}
       instance-id: ${spring.cloud.client.ip-address}:${server.port}
@@ -38,6 +38,27 @@ spring:
       enabled: true
       max-file-size: 1Mb
       max-request-size: 100Mb
+  rabbitmq:
+      host: 106.14.116.177
+      port: 5673
+      username: guest
+      password: guest
+      virtual-host: /
+      publisher-confirms: true
+      publisher-returns: true
+      ## 消费端配置
+      listener:
+        simple:
+          concurrency: 5
+          ## manual:手动 ack（确认）
+          acknowledge-mode: manual
+          max-concurrency: 10
+          prefetch: 1
+
+
+
+
+
 
 
 

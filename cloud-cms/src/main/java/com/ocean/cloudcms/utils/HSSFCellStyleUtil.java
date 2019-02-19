@@ -13,7 +13,7 @@ import org.apache.poi.ss.usermodel.*;
  */
 public class HSSFCellStyleUtil {
 
-    public HSSFCellStyle getStyleTitle(HSSFWorkbook workbook) {
+    public static HSSFCellStyle getStyleTitle(HSSFWorkbook workbook) {
 
         //设置字体
         HSSFFont font = workbook.createFont();
@@ -63,7 +63,7 @@ public class HSSFCellStyleUtil {
      * @param workbook
      * @return
      */
-    public HSSFCellStyle getStyle(HSSFWorkbook workbook) {
+    public static HSSFCellStyle getStyle(HSSFWorkbook workbook) {
         // 设置字体
         HSSFFont font = workbook.createFont();
         //设置字体名字
