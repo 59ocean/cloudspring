@@ -1,8 +1,11 @@
 package com.ocean.cloudcms.task.triggers;
 
+import com.caibab.common.base.entity.BaseObject;
 import org.springframework.scheduling.quartz.CronTriggerFactoryBean;
 
+import javax.sound.midi.Soundbank;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @Author: chenhy
@@ -12,5 +15,9 @@ import java.io.Serializable;
 public class QuarzTrigger1 extends CronTriggerFactoryBean implements Serializable {
 
 
-
+    public static void main(String[] args) {
+        BaseObject object = new BaseObject();
+        object.setCreateDt(new Date());
+        System.out.println(object);
+    }
 }

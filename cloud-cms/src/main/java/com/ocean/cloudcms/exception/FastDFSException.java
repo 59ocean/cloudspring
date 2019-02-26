@@ -4,7 +4,6 @@ package com.ocean.cloudcms.exception;
  * FastDFS 上传下载时可能出现的一些异常信息
  * <p>
  *
- * @author jiangzhou.bo@hand-china.com
  * @version 1.0
  * @name FastDFSException
  * @date 2017-10-13 15:12

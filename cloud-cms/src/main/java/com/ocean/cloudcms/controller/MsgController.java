@@ -1,6 +1,8 @@
 package com.ocean.cloudcms.controller;
 
+import com.ocean.cloudcms.message.MqMessage;
 import com.ocean.cloudcms.message.producter.RabbitMsgSender;
+import com.ocean.cloudcms.message.service.Mqservice;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +31,13 @@ public class MsgController {
         Map<String,Object> data = new HashMap<>();
         data.put("id",1);
         data.put("messageId","abcdn123");
+        MqMessage mqMessage = new MqMessage();
+        mqMessage.setMessageId(data.get("messageId").toString());
+        mqMessage.setServiceName(Mqservice.class.getName());
+        mqMessage.setServiceMethod("test");
+        mqMessage.setParams(data);
         try {
-            rabbitMsgSender.sendOrder(data);
+            rabbitMsgSender.sendMsg(mqMessage);
         } catch (Exception e) {
             e.printStackTrace();
         }
