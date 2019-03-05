@@ -40,16 +40,25 @@ public class StatsDemo {
     private static ThreadPoolExecutor executor  = new ThreadPoolExecutor(corePoolSize,corePoolSize+1,10l,TimeUnit.SECONDS,
             new LinkedBlockingQueue<Runnable>(1000));
 
+    public static void addThread() throws InterruptedException {
+         CountDownLatch latch = new CountDownLatch(2);
+        executor.execute(new Stats("任务我",2000,latch));
+        executor.execute(new Stats("任务wo sui",1000,latch));
+        latch.await();
+        System.out.println("所有的统计任务执行完成:" + sdf.format(new Date()));
+    }
+
     public static void main(String[] args) throws InterruptedException {
-        CountDownLatch latch = new CountDownLatch(5);
+        /*CountDownLatch latch = new CountDownLatch(5);
         //使用execute方法
         executor.execute(new Stats("任务A", 1000, latch));
         executor.execute(new Stats("任务B", 1000, latch));
         executor.execute(new Stats("任务C", 1000, latch));
         executor.execute(new Stats("任务D", 1000, latch));
-        executor.execute(new Stats("任务E", 1000, latch));
-        latch.await();// 等待所有人任务结束
-        System.out.println("所有的统计任务执行完成:" + sdf.format(new Date()));
+        executor.execute(new Stats("任务E", 1000, latch));*/
+        //latch.await();// 等待所有人任务结束
+        //System.out.println("所有的统计任务执行完成:" + sdf.format(new Date()));
+        addThread();
     }
 
     static class Stats implements Runnable  {

@@ -7,5 +7,17 @@
 		select `id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user where id = #{value}
 	</select>
 
+	<select id="getList"  resultType="com.ocean.clouduser.entity.User">
+		SELECT * FROM sys_user t WHERE 1=1
+		<if test="name !=null">
+             AND t.name=#{name}
+		</if>
+		<if test="username !=null">
+			AND t.username=#{username}
+		</if>
+		order by create_dt desc
+
+	</select>
+
 
 </mapper>

@@ -5,24 +5,24 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 public class BaseQuery implements Serializable {
-    @ApiModelProperty(name="pageNumber",value="当前页码")
-    private int pageNumber =1;
-    @ApiModelProperty(name="limit",value="限制数量")
-    private int limit =10;
+    @ApiModelProperty(name="pageNo",value="当前页码")
+    private int pageNo =1;
+    @ApiModelProperty(name="pageSize",value="限制数量")
+    private int pageSize =10;
 
-    public int getPageNumber() {
-        return pageNumber;
+    public int getPageNo() {
+        return pageNo;
     }
 
-    public void setPageNumber(int pageNumber) {
-        this.pageNumber = pageNumber;
+    public void setPageNo(int pageNo) {
+        this.pageNo = pageNo;
     }
 
-    public int getLimit() {
-        return limit;
+    public int getPageSize() {
+        return pageSize;
     }
 
-    public void setLimit(int limit) {
-        this.limit = limit;
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
     }
 }

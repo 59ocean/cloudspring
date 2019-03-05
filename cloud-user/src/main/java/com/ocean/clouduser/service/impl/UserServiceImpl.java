@@ -2,15 +2,11 @@ package com.ocean.clouduser.service.impl;
 
 
 
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
-import com.ocean.cloudcommon.utils.Pager;
-import com.ocean.cloudcommon.utils.StringUtils;
 import com.ocean.clouduser.dao.UserDao;
 import com.ocean.clouduser.entity.User;
 import com.ocean.clouduser.query.UserQuery;
 import com.ocean.clouduser.service.UserService;
-import com.ocean.clouduser.vo.UserVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +22,7 @@ import java.util.*;
 @Service
 public class UserServiceImpl extends BaseServiceImpl<UserDao,User> implements UserService {
 	@Autowired
-	UserDao userDao;
+	private UserDao userDao;
 
 
 	private static final Logger logger = LoggerFactory.getLogger(UserService.class);
@@ -40,8 +36,9 @@ public class UserServiceImpl extends BaseServiceImpl<UserDao,User> implements Us
 	}
 
 	@Override
-	public Page<UserVo> pageByMap(UserQuery query){
-		Page<UserVo> page = new Page<>(query.getPageNumber(),query.getLimit());
+	public Page<User> pageByMap(UserQuery query){
+		Page<User> page = new Page<>(query.getPageNo(),query.getPageSize());
+	/*	Page<UserVo> page = new Page<>(query.getPageNo(),query.getPageSize());
 		EntityWrapper entityWrapper = new EntityWrapper();
 		if(StringUtils.isNotBlank(query.getName())){
 			entityWrapper.like("name","%"+query.getName()+"%");
@@ -49,8 +46,8 @@ public class UserServiceImpl extends BaseServiceImpl<UserDao,User> implements Us
 		if(StringUtils.isNotBlank(query.getUsername())){
 			entityWrapper.like("username","%"+query.getUsername()+"%");
 		}
-		page.setRecords(userDao.selectPage(page,entityWrapper));
-		return page;
+		page.setRecords(userDao.selectPage(page,entityWrapper));*/
+		return page.setRecords(userDao.getList(page,query));
 	}
 
 
