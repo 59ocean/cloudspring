@@ -1,6 +1,8 @@
 package com.ocean.cloudcms;
 
 import com.ocean.cloudcms.config.FileUploadProperty;
+import com.ocean.cloudcms.dto.SensitiveBean;
+import com.ocean.cloudcms.utils.SensitivewordEngine;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -37,5 +39,6 @@ public class CloudCmsApplication {
 		factory.setMaxRequestSize(fileUploadProperty.getMaxRequestSize());//设置总上传数据总大小
 		return factory.createMultipartConfig();
 	}*/
+
 }
 

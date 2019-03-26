@@ -2,6 +2,7 @@ package com.ocean.cloudcms.controller;
 
 import com.ocean.cloudcms.message.MqMessage;
 import com.ocean.cloudcms.message.producter.RabbitMsgSender;
+import com.ocean.cloudcms.message.producter.RabbitMsgSenderTwo;
 import com.ocean.cloudcms.message.service.Mqservice;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -24,6 +25,8 @@ import java.util.Map;
 public class MsgController {
     @Autowired
     private  RabbitMsgSender rabbitMsgSender;
+    @Autowired
+    private RabbitMsgSenderTwo rabbitMsgSenderTwo;
 
     @GetMapping("/sendMsg")
     @ApiOperation(value = "发送消息")
@@ -38,6 +41,7 @@ public class MsgController {
         mqMessage.setParams(data);
         try {
             rabbitMsgSender.sendMsg(mqMessage);
+            //rabbitMsgSenderTwo.sendMsg(mqMessage);
         } catch (Exception e) {
             e.printStackTrace();
         }

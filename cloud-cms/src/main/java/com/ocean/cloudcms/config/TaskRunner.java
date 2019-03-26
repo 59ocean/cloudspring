@@ -2,6 +2,9 @@ package com.ocean.cloudcms.config;
 
 
 import com.ocean.cloudcms.entity.JobAndTrigger;
+import com.ocean.cloudcms.utils.SensitiveWordInit;
+import com.ocean.cloudcms.utils.SensitivewordEngine;
+import com.ocean.cloudcms.utils.Testgul;
 import org.quartz.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,7 +37,6 @@ public class TaskRunner implements ApplicationRunner {
 	@Override
     public void run(ApplicationArguments var) throws Exception{
 
-		System.out.println("+++++++++++++TaskRunner+++++++++++++++++");
 
     	/*Scheduler scheduler = schedulerFactoryBean.getScheduler();
 

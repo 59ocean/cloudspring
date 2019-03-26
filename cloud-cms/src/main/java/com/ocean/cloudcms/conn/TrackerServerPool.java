@@ -50,7 +50,6 @@ public class TrackerServerPool {
                 // 加载配置文件
                 ClassPathResource resource = new ClassPathResource(FASTDFS_CONFIG_PATH);
                 ClientGlobal.init(resource.getClassLoader().getResource(FASTDFS_CONFIG_PATH).getPath());
-
             } catch (IOException e) {
                 logger.info("加载fastDFS配置文件出错={}",e.getMessage());
             } catch (Exception e) {

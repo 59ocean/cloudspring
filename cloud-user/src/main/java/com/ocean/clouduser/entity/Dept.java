@@ -3,6 +3,7 @@ package com.ocean.clouduser.entity;
 import com.ocean.clouduser.entity.base.BaseEntity;
 
 import java.io.Serializable;
+import java.util.List;
 
 
 /**
@@ -25,6 +26,8 @@ public class Dept extends BaseEntity implements Serializable {
 	private Integer orderNum;
 	//是否删除  -1：已删除  0：正常
 	private Integer delFlag;
+
+	private List<User> userList;
 
 	/**
 	 * 设置：
@@ -85,6 +88,18 @@ public class Dept extends BaseEntity implements Serializable {
 	 */
 	public Integer getDelFlag() {
 		return delFlag;
+	}
+
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
+
+	public List<User> getUserList() {
+		return userList;
+	}
+
+	public void setUserList(List<User> userList) {
+		this.userList = userList;
 	}
 
 	@Override

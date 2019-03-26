@@ -18,6 +18,29 @@
 		order by create_dt desc
 
 	</select>
+	<resultMap id="deptWithUser" type="com.ocean.clouduser.entity.Dept">
+		 <id column="id" property="deptId" ></id>
+		 <result column="name" property="name"/>
+		 <collection  ofType="com.ocean.clouduser.entity.User" column="id" property="userList">
+			 <result column="uid" property="id"/>
+			 <result column="uname" property="name" />
+		 </collection>
+
+
+	</resultMap>
+
+	<select id="getDeptWithUser" resultMap="deptWithUser">
+	select d.dept_id AS id ,d.name,u.user_id as uid,u.name AS uname from sys_dept d LEFT JOIN sys_user u ON u.dept_id = d.dept_id
+	</select>
+
+	 <select id="getDeptWithUser2"  resultType="java.util.Map">
+	 select d.dept_id AS id ,d.name,u.user_id as uid,u.name AS uname from sys_dept d LEFT JOIN sys_user u ON u.dept_id = d.dept_id
+	 </select>
+
+	<select id="getDeptNames" resultType="java.lang.String">
+		SELECT d.name FROM sys_dept d
+	</select>
+
 
 
 </mapper>

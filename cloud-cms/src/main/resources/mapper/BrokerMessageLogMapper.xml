@@ -16,8 +16,14 @@
 
 
   <insert id="insertSelective" parameterType="com.ocean.cloudcms.entity.BrokerMessageLog" >
+    <!--<selectKey keyProperty="userId" resultType="java.lang.String" order="BEFORE">
+      select uuid()
+    </selectKey>-->
     insert into broker_msg_log
     <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id!= null" >
+        id,
+      </if>
       <if test="messageId != null" >
         message_id,
       </if>
@@ -41,6 +47,9 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id},
+      </if>
       <if test="messageId != null" >
         #{messageId,jdbcType=VARCHAR},
       </if>
@@ -90,5 +99,8 @@
           bml.update_time = #{updateTime, jdbcType=TIMESTAMP}
     where bml.message_id = #{messageId,jdbcType=VARCHAR}
   </update>
+  <select id="getKeyWord" resultType="String">
+    select c.KEY_WORD as keyWord from CMM_KEY_WORD c
+  </select>
 
 </mapper>

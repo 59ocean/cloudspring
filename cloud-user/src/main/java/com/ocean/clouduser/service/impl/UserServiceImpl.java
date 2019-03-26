@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @Author bootdo 1992lcg@163.com
@@ -26,7 +27,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserDao,User> implements Us
 
 
 	private static final Logger logger = LoggerFactory.getLogger(UserService.class);
-
+  ConcurrentHashMap concurrentHashMap = new ConcurrentHashMap();
 
 
 
@@ -47,6 +48,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserDao,User> implements Us
 			entityWrapper.like("username","%"+query.getUsername()+"%");
 		}
 		page.setRecords(userDao.selectPage(page,entityWrapper));*/
+		concurrentHashMap.put("dd","dd");
 		return page.setRecords(userDao.getList(page,query));
 	}
 

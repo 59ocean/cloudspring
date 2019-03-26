@@ -28,6 +28,7 @@ public class QuarzController {
         int maxInt = list.stream().min(Integer::compareTo).get();
         String tr = list2.stream().min(String::compareTo).get();
         System.out.println(list.stream().filter(x -> x>2).collect(Collectors.toList()));
+        List<Integer>result = list.stream().filter(t-> t>5).sorted().collect(Collectors.toList());
 
 
     }

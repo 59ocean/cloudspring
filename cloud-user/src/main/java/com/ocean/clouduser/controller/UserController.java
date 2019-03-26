@@ -6,6 +6,8 @@ package com.ocean.clouduser.controller;
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.ocean.cloudcommon.utils.R;
+import com.ocean.clouduser.dao.UserDao;
+import com.ocean.clouduser.entity.Dept;
 import com.ocean.clouduser.entity.User;
 import com.ocean.clouduser.query.UserQuery;
 import com.ocean.clouduser.service.UserService;
@@ -32,6 +34,9 @@ import java.util.Map;
 public class UserController extends BaseController {
     @Autowired
 	UserService userService;
+
+	@Autowired
+    UserDao userDao;
 
 	@GetMapping("/view")
 	@ApiOperation(value = "根据id获得用户")
@@ -62,6 +67,27 @@ public class UserController extends BaseController {
 		return userService.pageByMap(query);
 	}
 
+	@GetMapping("/deptlist")
+	@ApiOperation(value = "获得部门实体")
+	@ResponseBody
+	public List<Dept> getDeptWithUser(@RequestParam("id")String id){
+		List<Dept> list =userDao.getDeptWithUser();
+		return list;
+	}
+	@GetMapping("/deptlist2")
+	@ApiOperation(value = "获得部门实体")
+	@ResponseBody
+	public List<Map<String,Object>> getDeptWithUser2(){
+		List<Map<String,Object>> list =userDao.getDeptWithUser2();
+		return list;
+	}
+	@GetMapping("/getDeptNames")
+	@ApiOperation(value = "获得部门实体名称")
+	@ResponseBody
+	public List<String> getDeptName(){
+		List<String> list =userDao.getDeptNames();
+		return list;
+	}
 
 
 }
