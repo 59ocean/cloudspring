@@ -75,5 +75,21 @@ public class LoginController extends BaseController {
         return R.ok();
     }
 
+    @GetMapping("/setRedis")
+    @ApiOperation(value = "redis赋值")
+    public R setRedis(String key,String value) {
+        ValueOperations valueOperations = stringRedisTemplate.opsForValue();
+        //valueOperations.set(key,value);
+        redisHelper.valuePut(key,value);
+        return R.ok();
+    }
+    @GetMapping("/getRedis")
+    @ApiOperation(value = "redis取值")
+    public R getRedis(String key) {
+        ValueOperations valueOperations = stringRedisTemplate.opsForValue();
+        return R.ok().put("data",redisHelper.getValue(key));
+    }
+
+
 
 }

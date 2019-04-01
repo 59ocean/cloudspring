@@ -1,8 +1,11 @@
 package com.ocean.cloudcms.message.service;
 
+import com.fasterxml.jackson.datatype.jsr310.deser.key.LocalDateKeyDeserializer;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @Author: chenhy
@@ -11,9 +14,17 @@ import java.util.Map;
  */
 @Component
 public class Mqservice {
-
+    private Lock lock = new ReentrantLock();
     public void test(Map<String,Object> params){
 
-        System.out.println(params.get("id"));
+        lock.lock();
+        System.out.println("==========11========");
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("==========2==========");
+        lock.unlock();
     }
 }

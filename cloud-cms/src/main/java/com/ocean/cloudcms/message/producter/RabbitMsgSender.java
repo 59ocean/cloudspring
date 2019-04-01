@@ -64,7 +64,7 @@ public class RabbitMsgSender {
         rabbitTemplate.setConfirmCallback(confirmCallback);
         //消息唯一ID
         CorrelationData correlationData = new CorrelationData((String) message.getMessageId());
-        rabbitTemplate.convertAndSend("test-exchange-fanout", "fanout.abc", message, correlationData);
+        rabbitTemplate.convertAndSend("order-exchange", "order.abc", message, correlationData);
     }
 
     public static void main(String[] args) {

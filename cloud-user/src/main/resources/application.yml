@@ -36,8 +36,16 @@ spring:
   redis:
     host: 106.14.116.177
     port: 6379
-    password: root
-
+    #password: root
+fastdfs:
+   tracker-servers: 192.168.2.20
+   charset: UTF-8
+   connectTimeout: 30
+   networkTimeout: 30
+   httpAntiStealToken: false
+  # httpSecretKey: 123456
+   httpTrackerHttpPort: 80
+   port: 22122
 
 
 #mybatis

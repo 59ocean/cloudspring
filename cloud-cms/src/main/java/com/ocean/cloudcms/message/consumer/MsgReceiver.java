@@ -1,11 +1,13 @@
 package com.ocean.cloudcms.message.consumer;
 
 import com.ocean.cloudcms.message.MqMessage;
+import com.ocean.cloudcms.message.service.Mqservice;
 import com.ocean.cloudcms.utils.SpringUtil;
 import com.rabbitmq.client.Channel;
 import org.apache.poi.ss.formula.functions.T;
 import org.springframework.amqp.rabbit.annotation.*;
 import org.springframework.amqp.support.AmqpHeaders;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.messaging.handler.annotation.Headers;
 import org.springframework.messaging.handler.annotation.Payload;
@@ -18,6 +20,9 @@ import java.util.Map;
 
 @Component
 public class MsgReceiver {
+    @Autowired
+    private Mqservice mqservice;
+
     //配置监听的哪一个队列，同时在没有queue和exchange的情况下会去创建并建立绑定关系
     @RabbitListener(bindings = @QueueBinding(
             value = @Queue(value = "order-queue",durable = "true"),
@@ -28,15 +33,25 @@ public class MsgReceiver {
     @RabbitHandler//如果有消息过来，在消费的时候调用这个方法
     public void onOrderMessage(@Payload MqMessage message, @Headers Map<String,Object> headers, Channel channel) throws IOException {
         //消费者操作
-        System.out.println("---------收到消息，开始消费---------");
-        System.out.println("订单ID：");
+      /*  System.out.println("---------收到消息，开始消费---------");
+        System.out.println("订单ID：");*/
         String serviceName = message.getServiceName();
         String serviceMethod = message.getServiceMethod();
         try {
+          /*  System.out.println("==========receiver1========");
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("==========receiver2==========");*/
             Class service = Class.forName(serviceName);
+            //从spring容器中拿bean，the bean is 单例
+
             Object object = SpringUtil.getBean(service);
             Method method = service.getMethod(serviceMethod,Map.class);
             method.invoke(object,message.getParams());
+            //new Mqservice().test(message.getParams());
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (NoSuchMethodException e) {
