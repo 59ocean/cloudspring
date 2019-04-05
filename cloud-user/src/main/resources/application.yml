@@ -1,12 +1,18 @@
+server:
+    port: 8005
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8001/eureka/
+  instance:
+      hostname: ${spring.cloud.client.ip-address}
+      instance-id: ${spring.cloud.client.ip-address}:${server.port}
+      prefer-ip-address: true
+      status-page-url: http://${spring.cloud.client.ip-address}:${server.port}/swagger-ui.html # ${server.port}为该服务的端口号
 #security:
 #  basic:
 #    enabled: false
-server:
-    port: 8005
+
 #spring
 spring:
   #devtools:
@@ -27,6 +33,19 @@ spring:
     restart:
       enabled: true
       additional-paths: src/main/java
+  redis:
+    host: 106.14.116.177
+    port: 6379
+    #password: root
+fastdfs:
+   tracker-servers: 192.168.2.20
+   charset: UTF-8
+   connectTimeout: 30
+   networkTimeout: 30
+   httpAntiStealToken: false
+  # httpSecretKey: 123456
+   httpTrackerHttpPort: 80
+   port: 22122
 
 
 #mybatis

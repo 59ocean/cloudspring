@@ -1,6 +1,9 @@
 package com.ocean.clouduser.entity;
 
+import com.ocean.clouduser.entity.base.BaseEntity;
+
 import java.io.Serializable;
+import java.util.List;
 
 
 /**
@@ -10,7 +13,7 @@ import java.io.Serializable;
  * @email 1992lcg@163.com
  * @date 2017-09-27 14:28:36
  */
-public class Dept implements Serializable {
+public class Dept extends BaseEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	//
@@ -23,6 +26,8 @@ public class Dept implements Serializable {
 	private Integer orderNum;
 	//是否删除  -1：已删除  0：正常
 	private Integer delFlag;
+
+	private List<User> userList;
 
 	/**
 	 * 设置：
@@ -83,6 +88,18 @@ public class Dept implements Serializable {
 	 */
 	public Integer getDelFlag() {
 		return delFlag;
+	}
+
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
+
+	public List<User> getUserList() {
+		return userList;
+	}
+
+	public void setUserList(List<User> userList) {
+		this.userList = userList;
 	}
 
 	@Override

@@ -1,8 +1,10 @@
 package com.ocean.clouduser.entity;
 
+import com.ocean.clouduser.entity.base.BaseEntity;
+
 import java.util.Date;
 
-public class Role {
+public class Role extends BaseEntity {
     private Long roleId;
 
     private String roleName;
