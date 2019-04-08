@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/cloud-eureka/cloud-eureka.iml" filepath="$PROJECT_DIR$/cloud-eureka/cloud-eureka.iml" />
       <module fileurl="file://$PROJECT_DIR$/cloud-user/cloud-user.iml" filepath="$PROJECT_DIR$/cloud-user/cloud-user.iml" />
       <module fileurl="file://$PROJECT_DIR$/cloud-zuul/cloud-zuul.iml" filepath="$PROJECT_DIR$/cloud-zuul/cloud-zuul.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fastdfs/fastdfs.iml" filepath="$PROJECT_DIR$/fastdfs/fastdfs.iml" />
     </modules>
   </component>
 </project>

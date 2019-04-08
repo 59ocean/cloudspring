@@ -48,6 +48,7 @@ fastdfs:
    port: 22122
 
 
+
 #mybatis
 mybatis-plus:
   mapper-locations: classpath:/mapper/*Mapper.xml

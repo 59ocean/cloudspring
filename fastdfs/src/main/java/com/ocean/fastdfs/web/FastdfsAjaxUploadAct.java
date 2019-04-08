@@ -105,7 +105,7 @@ public class FastdfsAjaxUploadAct {
 	 * 
 	 * @return
 	 */
-    @ApiOperation(value = "异步上传文件 zx 启用水印的参数为imgIcon， true为启用")
+    @ApiOperation(value = "异步上传图片 zx 启用水印的参数为imgIcon， true为启用")
 	@RequestMapping(value = "/uploadImg", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public String uploadImg(HttpServletRequest request, HttpServletResponse response, String uploadRuleId) {

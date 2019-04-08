@@ -7,6 +7,7 @@
         <option value="$PROJECT_DIR$/gateway/pom.xml" />
         <option value="$PROJECT_DIR$/cloud-zuul/pom.xml" />
         <option value="$PROJECT_DIR$/cloud-cms/pom.xml" />
+        <option value="$PROJECT_DIR$/fastdfs/pom.xml" />
       </list>
     </option>
   </component>

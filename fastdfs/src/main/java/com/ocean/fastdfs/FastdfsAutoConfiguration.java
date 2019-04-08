@@ -1,9 +1,5 @@
 package com.ocean.fastdfs;
 
-import java.io.IOException;
-import java.net.InetSocketAddress;
-import java.util.Properties;
-
 import com.ocean.fastdfs.config.ImageConfig;
 import com.ocean.fastdfs.config.ImageLargeConfig;
 import com.ocean.fastdfs.config.ImageMarkConfig;
@@ -18,7 +14,6 @@ import com.ocean.fastdfs.service.IGenerateClient;
 import com.ocean.fastdfs.web.FastdfsAjaxUploadAct;
 import com.ocean.fastdfs.web.FastdfsDownLoadAct;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
-import org.csource.common.MyException;
 import org.csource.fastdfs.ClientGlobal;
 import org.csource.fastdfs.TrackerGroup;
 import org.slf4j.Logger;
@@ -28,8 +23,10 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.util.StringUtils;
+
+import java.net.InetSocketAddress;
+import java.util.Properties;
 
 
 
@@ -72,7 +69,6 @@ public class FastdfsAutoConfiguration {
 	// 初始化配置文件信息
 	private void init(FastdfsProperties fastdfsProperties) {
 		logger.debug("init:");
-			Properties prop = new Properties();
 			ClientGlobal.setG_charset(fastdfsProperties.getCharset());
 			ClientGlobal.setG_connect_timeout(fastdfsProperties.getConnectTimeout());
 			ClientGlobal.setG_anti_steal_token(fastdfsProperties.isHttpAntiStealToken() ? true : false);
@@ -80,7 +76,7 @@ public class FastdfsAutoConfiguration {
 			ClientGlobal.setG_tracker_http_port(fastdfsProperties.getHttpTrackerHttpPort());
 			ClientGlobal.setG_network_timeout(fastdfsProperties.getNetworkTimeout());
 		    InetSocketAddress[] tracker_servers = new InetSocketAddress[1];
-		   tracker_servers[0] = new InetSocketAddress(fastdfsProperties.getTrackerServers(),fastdfsProperties.getPort());
+		    tracker_servers[0] = new InetSocketAddress(fastdfsProperties.getTrackerServers(),fastdfsProperties.getPort());
 		    ClientGlobal.setG_tracker_group(new TrackerGroup(tracker_servers));
 		/*try {
 			ClassPathResource resource = new ClassPathResource("fdfs_client.conf");
