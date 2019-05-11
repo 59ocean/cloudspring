@@ -50,4 +50,6 @@ public class Goods {
 	public void setGoodsStock(Integer goodsStock) {
 		this.goodsStock = goodsStock;
 	}
+
+
 }

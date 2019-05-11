@@ -71,6 +71,7 @@ public class UserController extends BaseController {
 	@ApiOperation(value = "获得部门实体")
 	@ResponseBody
 	public List<Dept> getDeptWithUser(@RequestParam("id")String id){
+		System.out.println("获得部门尸体444");
 		List<Dept> list =userDao.getDeptWithUser();
 		return list;
 	}
