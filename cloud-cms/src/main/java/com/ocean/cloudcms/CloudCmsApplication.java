@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -22,6 +23,7 @@ import javax.servlet.MultipartConfigElement;
 @Configuration
 @MapperScan("com.ocean.cloudcms.dao")
 @EnableConfigurationProperties({ FileUploadProperty.class})
+@EnableFeignClients
 public class CloudCmsApplication {
 
 	public static void main(String[] args) {

@@ -1,9 +1,12 @@
 package com.ocean.cloudcms.controller;
 
 import com.ocean.cloudcms.dao.BrokerMessageLogMapper;
+import com.ocean.cloudcms.feginClients.UserFeignClient;
 import com.ocean.cloudcms.thread.StatsDemo;
 import com.ocean.cloudcms.utils.SensitiveWordInit;
 import com.ocean.cloudcms.utils.SensitivewordEngine;
+import com.ocean.cloudcms.vo.UserVo;
+import com.ocean.cloudcommon.utils.ApiResponse;
 import com.ocean.cloudcommon.utils.R;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -25,6 +28,9 @@ import java.util.Set;
 public class TestController {
     @Autowired
     private BrokerMessageLogMapper brokerMessageLogMapper;
+    @Autowired
+    private UserFeignClient userFeignClient;
+
     @ApiOperation(value = "测试线程")
     @GetMapping("/test/addThread/")
     public R test() throws InterruptedException {
@@ -51,5 +57,11 @@ public class TestController {
 
         return R.ok().put("data",result)
                 .put("time",System.currentTimeMillis()-a);
+    }
+
+    @GetMapping("/test/getUserFromFeignClient")
+    public ApiResponse testFeignClient(long id){
+        UserVo userVo = userFeignClient.getUser(id);
+        return ApiResponse.ok(userVo);
     }
 }

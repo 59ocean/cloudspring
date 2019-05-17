@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -22,6 +23,7 @@ import javax.sql.DataSource;
 @MapperScan("com.ocean.clouduser.dao")
 @EnableEurekaClient
 @EnableSwagger2
+@EnableFeignClients
 public class CloudUserApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CloudUserApplication.class, args);

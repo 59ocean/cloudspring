@@ -3,6 +3,7 @@ package com.ocean.cloudcms.exception;
 /**
  * 调用服务逻辑异常
  * <p/>
+ * @author chenhy
  */
 public class ServiceException extends RuntimeException implements	BaseException, RetCodeSupport {
 
@@ -48,7 +49,7 @@ public class ServiceException extends RuntimeException implements	BaseException,
 		this(message, throwable);
 		this.retCode = retCode;
 	}
-
+	@Override
 	public String getRetCode() {
 		return retCode;
 	}
