@@ -6,9 +6,11 @@
       <module fileurl="file://$PROJECT_DIR$/cloud-cms/cloud-cms.iml" filepath="$PROJECT_DIR$/cloud-cms/cloud-cms.iml" />
       <module fileurl="file://$PROJECT_DIR$/cloud-common/cloud-common.iml" filepath="$PROJECT_DIR$/cloud-common/cloud-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/cloud-eureka/cloud-eureka.iml" filepath="$PROJECT_DIR$/cloud-eureka/cloud-eureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cloud-order/cloud-order.iml" filepath="$PROJECT_DIR$/cloud-order/cloud-order.iml" />
       <module fileurl="file://$PROJECT_DIR$/cloud-user/cloud-user.iml" filepath="$PROJECT_DIR$/cloud-user/cloud-user.iml" />
       <module fileurl="file://$PROJECT_DIR$/cloud-zuul/cloud-zuul.iml" filepath="$PROJECT_DIR$/cloud-zuul/cloud-zuul.iml" />
       <module fileurl="file://$PROJECT_DIR$/fastdfs/fastdfs.iml" filepath="$PROJECT_DIR$/fastdfs/fastdfs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fastdfs/fastdfs-spring-boot-starter.iml" filepath="$PROJECT_DIR$/fastdfs/fastdfs-spring-boot-starter.iml" />
     </modules>
   </component>
 </project>

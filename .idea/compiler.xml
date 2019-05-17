@@ -9,9 +9,11 @@
         <module name="cloud-cms" />
         <module name="cloud-common" />
         <module name="cloud-eureka" />
+        <module name="cloud-order" />
         <module name="cloud-user" />
         <module name="cloud-zuul" />
         <module name="fastdfs" />
+        <module name="fastdfs-spring-boot-starter" />
         <module name="gateway" />
       </profile>
     </annotationProcessing>
@@ -20,9 +22,11 @@
       <module name="cloud-cms" target="1.8" />
       <module name="cloud-common" target="1.8" />
       <module name="cloud-eureka" target="1.8" />
+      <module name="cloud-order" target="1.8" />
       <module name="cloud-user" target="1.8" />
       <module name="cloud-zuul" target="1.8" />
       <module name="fastdfs" target="1.8" />
+      <module name="fastdfs-spring-boot-starter" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

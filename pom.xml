@@ -7,6 +7,13 @@
     <groupId>com.ocean</groupId>
     <artifactId>cloud</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot</artifactId>
+            <version>RELEASE</version>
+        </dependency>
+    </dependencies>
     <packaging>pom</packaging>
 
     <modules>
@@ -14,6 +21,9 @@
         <module>cloud-eureka</module>
         <module>cloud-common</module>
         <module>cloud-zuul</module>
+        <module>cloud-cms</module>
+        <module>cloud-order</module>
+        <module>fastdfs</module>
     </modules>
     <repositories>
         <repository>

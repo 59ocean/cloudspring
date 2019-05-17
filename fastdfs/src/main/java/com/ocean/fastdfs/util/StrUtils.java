@@ -20,7 +20,7 @@ public class StrUtils {
 	 * 获得字符。符合中文习惯。
 	 * 
 	 * @param s
-	 * @param length
+	 * @param len
 	 * @return
 	 */
 	public static String getCn(String s, int len) {

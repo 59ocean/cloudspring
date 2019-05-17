@@ -6,6 +6,7 @@ import org.quartz.ee.servlet.QuartzInitializerListener;
 import org.quartz.spi.JobFactory;
 import org.quartz.spi.TriggerFiredBundle;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.beans.factory.config.PropertiesFactoryBean;
 import org.springframework.context.ApplicationContext;
@@ -54,7 +55,7 @@ public class QuartConfig {
         return factory;
     }*/
     @Bean(name="SchedulerFactory")
-    public SchedulerFactoryBean schedulerFactoryBean(JobFactory jobFactory,DataSource dataSource) throws IOException {
+    public SchedulerFactoryBean schedulerFactoryBean(JobFactory jobFactory, @Qualifier("dataSource") DataSource dataSource) throws IOException {
         SchedulerFactoryBean factory = new SchedulerFactoryBean();
         factory.setAutoStartup(true); //设置自行启动
         //可选,QuartzScheduler启动时更新己存在的Job,这样就不用每次修改targetObject后删除qrtz_job_details表对应记录
