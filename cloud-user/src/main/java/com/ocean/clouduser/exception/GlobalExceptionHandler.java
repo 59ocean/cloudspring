@@ -1,8 +1,6 @@
 package com.ocean.clouduser.exception;
 
 import com.ocean.cloudcommon.utils.ApiResponse;
-import com.ocean.cloudcommon.utils.R;
-import groovy.util.logging.Slf4j;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-@Slf4j
 @RestController
 @ControllerAdvice
 public class GlobalExceptionHandler {
