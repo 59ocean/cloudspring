@@ -1,6 +1,6 @@
 package com.ocean.clouduser.vo;
 
-import com.baomidou.mybatisplus.annotations.TableName;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.ocean.clouduser.entity.base.BaseEntity;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-@TableName("sys_user")
 public class UserVo extends BaseEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 

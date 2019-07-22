@@ -1,10 +1,15 @@
 package com.ocean.clouduser.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.ocean.clouduser.entity.base.BaseEntity;
 
 import java.util.Date;
 
+@TableName("sys_role")
 public class Role extends BaseEntity {
+    @TableId(type = IdType.AUTO)
     private Long roleId;
 
     private String roleName;
@@ -18,6 +23,18 @@ public class Role extends BaseEntity {
     private Date gmtCreate;
 
     private Date gmtModified;
+    /**
+     * 角色code用于springsecurity角色标识码
+     */
+    private String roleCode;
+
+    public String getRoleCode () {
+        return roleCode;
+    }
+
+    public void setRoleCode (String roleCode) {
+        this.roleCode = roleCode;
+    }
 
     public Long getRoleId() {
         return roleId;

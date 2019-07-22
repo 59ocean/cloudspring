@@ -1,12 +1,11 @@
 package com.ocean.clouduser.dao;
 
-import com.baomidou.mybatisplus.mapper.BaseMapper;
-import com.baomidou.mybatisplus.plugins.pagination.Pagination;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ocean.clouduser.entity.Dept;
 import com.ocean.clouduser.entity.User;
 import com.ocean.clouduser.query.UserQuery;
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -18,11 +17,11 @@ import java.util.Map;
  * @date 2017-10-03 09:45:11
  */
 @Mapper
-public interface UserDao extends BaseMapper<User>{
+public interface UserDao extends BaseMapper<User> {
 
 	User get(Long userId);
 
-	List<User> getList(Pagination page,UserQuery query);
+	List<User> getList(Page page, UserQuery query);
 
 	List<Dept> getDeptWithUser();
 

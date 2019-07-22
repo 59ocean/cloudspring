@@ -1,8 +1,12 @@
 package com.ocean.clouduser.dao;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.ocean.clouduser.entity.Role;
+import org.jsoup.Connection;
 
-public interface RoleMapper {
+import java.util.List;
+
+public interface RoleMapper extends BaseMapper<Role> {
     int deleteByPrimaryKey(Long roleId);
 
     int insert(Role record);
@@ -14,4 +18,6 @@ public interface RoleMapper {
     int updateByPrimaryKeySelective(Role record);
 
     int updateByPrimaryKey(Role record);
+
+    List<Role> selectByUserId(Long UserId);
 }

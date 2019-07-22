@@ -3,49 +3,40 @@ package com.ocean.clouduser.entity.base;
 import java.util.Date;
 
 public class BaseEntity {
-    private Date createDt;
+    private Date createDate;
     private String creator;
-    private Date updateDt;
+    private Date updateDate;
     private String updator;
-    private int version;
 
-    public Date getCreateDt() {
-        return createDt;
+    public Date getCreateDate () {
+        return createDate;
     }
 
-    public void setCreateDt(Date createDt) {
-        this.createDt = createDt;
+    public void setCreateDate (Date createDate) {
+        this.createDate = createDate;
     }
 
-    public String getCreator() {
+    public String getCreator () {
         return creator;
     }
 
-    public void setCreator(String creator) {
+    public void setCreator (String creator) {
         this.creator = creator;
     }
 
-    public Date getUpdateDt() {
-        return updateDt;
+    public Date getUpdateDate () {
+        return updateDate;
     }
 
-    public void setUpdateDt(Date updateDt) {
-        this.updateDt = updateDt;
+    public void setUpdateDate (Date updateDate) {
+        this.updateDate = updateDate;
     }
 
-    public String getUpdator() {
+    public String getUpdator () {
         return updator;
     }
 
-    public void setUpdator(String updator) {
+    public void setUpdator (String updator) {
         this.updator = updator;
-    }
-
-    public int getVersion() {
-        return version;
-    }
-
-    public void setVersion(int version) {
-        this.version = version;
     }
 }

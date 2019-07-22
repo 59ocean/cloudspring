@@ -28,7 +28,6 @@
 
 
 	</resultMap>
-
 	<select id="getDeptWithUser" resultMap="deptWithUser">
 	select d.dept_id AS id ,d.name,u.user_id as uid,u.name AS uname from sys_dept d LEFT JOIN sys_user u ON u.dept_id = d.dept_id
 	</select>

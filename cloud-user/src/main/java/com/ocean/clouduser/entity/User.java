@@ -1,6 +1,9 @@
 package com.ocean.clouduser.entity;
 
-import com.baomidou.mybatisplus.annotations.TableName;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.ocean.clouduser.entity.base.BaseEntity;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -12,7 +15,7 @@ import java.util.List;
 public class User extends BaseEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    //
+    @TableId(type = IdType.AUTO)
     private Long id;
     // 用户名
     private String username;
@@ -56,6 +59,9 @@ public class User extends BaseEntity implements Serializable {
     private String city;
     //所在地区
     private String district;
+
+    @TableField(exist = false)
+    private List<Role> roles;
 
     public void setId(Long id) {
         this.id = id;
@@ -272,6 +278,14 @@ public class User extends BaseEntity implements Serializable {
 
     public void setDistrict(String district) {
         this.district = district;
+    }
+
+    public List<Role> getRoles () {
+        return roles;
+    }
+
+    public void setRoles (List<Role> roles) {
+        this.roles = roles;
     }
 
     @Override

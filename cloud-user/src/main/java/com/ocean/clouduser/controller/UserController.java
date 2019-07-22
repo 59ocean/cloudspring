@@ -4,8 +4,8 @@ package com.ocean.clouduser.controller;
 
 
 import com.alibaba.fastjson.JSON;
-import com.baomidou.mybatisplus.plugins.Page;
-import com.ocean.cloudcommon.utils.R;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ocean.clouduser.dao.UserDao;
 import com.ocean.clouduser.entity.Dept;
 import com.ocean.clouduser.entity.User;
@@ -13,9 +13,7 @@ import com.ocean.clouduser.query.UserQuery;
 import com.ocean.clouduser.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,10 +39,16 @@ public class UserController extends BaseController {
 	@GetMapping("/view")
 	@ApiOperation(value = "根据id获得用户")
 	@ApiImplicitParam(name="id",value = "用户id",required = true)
-    public User getUser(@RequestParam("id")Long id){
+	public User getUser(@RequestParam("id")Long id){
 		return userService.getById(id);
 	}
+	@GetMapping("/findByUsername")
+	@ApiOperation(value = "根据用户账号获得用户")
+	@ApiImplicitParam(name="username",value = "用户账号",required = true)
+	public User getUserByUsername(@RequestParam("username")String username){
 
+		return userService.findOneByUsername(username);
+	}
 
 
 

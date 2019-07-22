@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="com.ocean.clouduser.entity.Role" >
     <id column="role_id" property="roleId" jdbcType="BIGINT" />
     <result column="role_name" property="roleName" jdbcType="VARCHAR" />
+    <result column="role_code" property="roleCode" jdbcType="VARCHAR" />
     <result column="role_sign" property="roleSign" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
     <result column="user_id_create" property="userIdCreate" jdbcType="BIGINT" />
@@ -19,6 +20,17 @@
     from sys_role
     where role_id = #{roleId,jdbcType=BIGINT}
   </select>
+
+  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from sys_role
+    where role_id in (
+    select t.role_id from sys_user_role t where t.user_id = #{userId}
+    )
+  </select>
+
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from sys_role
     where role_id = #{roleId,jdbcType=BIGINT}
