@@ -6,9 +6,11 @@ package com.ocean.clouduser.controller;
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.ocean.cloudcommon.utils.ApiResponse;
 import com.ocean.clouduser.dao.UserDao;
 import com.ocean.clouduser.entity.Dept;
 import com.ocean.clouduser.entity.User;
+import com.ocean.clouduser.feign.CmsServiceFeign;
 import com.ocean.clouduser.query.UserQuery;
 import com.ocean.clouduser.service.UserService;
 import io.swagger.annotations.Api;
@@ -32,6 +34,8 @@ import java.util.Map;
 public class UserController extends BaseController {
     @Autowired
 	UserService userService;
+    @Autowired
+    private CmsServiceFeign cmsServiceFeign;
 
 	@Autowired
     UserDao userDao;
@@ -92,6 +96,20 @@ public class UserController extends BaseController {
 	public List<String> getDeptName(){
 		List<String> list =userDao.getDeptNames();
 		return list;
+	}
+
+	@GetMapping("/test")
+	@ApiOperation(value = "测试oauthfeign")
+	@ApiImplicitParam(name="id",value = "用户id",required = true)
+	public ApiResponse testoauthfeign(){
+		System.out.println("测试oauthfeign");
+		return cmsServiceFeign.oauthfeign();
+	}
+
+	@RequestMapping(value="/test2",method = RequestMethod.GET)
+	public ApiResponse test2(){
+		System.out.println("测试2");
+		return ApiResponse.ok("test2");
 	}
 
 

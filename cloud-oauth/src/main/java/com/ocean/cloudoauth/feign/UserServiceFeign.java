@@ -1,5 +1,6 @@
 package com.ocean.cloudoauth.feign;
 
+import com.ocean.cloudcommon.utils.ApiResponse;
 import com.ocean.cloudoauth.vo.UserVo;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -18,4 +19,11 @@ public interface UserServiceFeign {
 
 	@RequestMapping(value = "/v1/user/findByUsername",method = RequestMethod.GET)
 	public UserVo getUserByUsername(@RequestParam("username")String username);
+
+
+	@GetMapping("/v1/user/view")
+	public UserVo getUser(@RequestParam("id")Long id);
+
+	@RequestMapping(value="/v1/user/test2",method = RequestMethod.GET)
+	public ApiResponse test2();
 }

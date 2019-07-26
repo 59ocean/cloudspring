@@ -5,6 +5,8 @@ eureka:
     serviceUrl:
       defaultZone: http://106.14.116.177:8001/eureka/
   instance:
+      leaseRenewalIntervalInSeconds: 13333323
+      leaseExpirationDurationInSeconds: 2
       hostname: ${spring.cloud.client.ip-address}
       instance-id: ${spring.cloud.client.ip-address}:${server.port}
       prefer-ip-address: true
@@ -30,8 +32,8 @@ spring:
       password: 123456
       # 下面为连接池的补充设置，应用到上面所有数据源中
       # 初始化大小，最小，最大
-      initial-size: 5
-      min-idle: 5
+      initial-size: 2
+      min-idle: 2
       max-active: 20
       # 配置获取连接等待超时的时间
       max-wait: 60000
@@ -99,4 +101,19 @@ mybatis-plus:
     map-underscore-to-camel-case: true
     cache-enabled: false
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-
+security:
+  oauth2:
+    resource:
+      user-info-uri: http://localhost:8090/users/current #获取当前Token的用户信息
+    client:
+      clientId: cloud
+      clientSecret: cloud
+      accessTokenUri: http://localhost:8090/oauth/token #获取Token
+      grant-type: password
+      scope: server
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: SEMAPHORE

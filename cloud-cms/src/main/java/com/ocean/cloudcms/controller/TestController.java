@@ -13,6 +13,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -63,5 +64,16 @@ public class TestController {
     public ApiResponse testFeignClient(long id){
         UserVo userVo = userFeignClient.getUser(id);
         return ApiResponse.ok(userVo);
+    }
+
+    @RequestMapping(value = "/test/userfeign",method = RequestMethod.GET)
+    public ApiResponse userfeign(){
+        ApiResponse apiResponse = userFeignClient.test2();
+        return apiResponse;
+    }
+
+    @GetMapping("/test/oauthfeign")
+    public ApiResponse oauthfeign(){
+        return ApiResponse.ok("success");
     }
 }

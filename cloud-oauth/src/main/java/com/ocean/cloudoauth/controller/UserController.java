@@ -1,10 +1,20 @@
 package com.ocean.cloudoauth.controller;
 
+import com.ocean.cloudcommon.utils.ApiResponse;
 import com.ocean.cloudcommon.utils.R;
+import com.ocean.cloudoauth.feign.UserServiceFeign;
+import com.ocean.cloudoauth.vo.UserVo;
+import feign.RequestInterceptor;
+import feign.RequestTemplate;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationDetails;
 import org.springframework.security.oauth2.provider.token.ConsumerTokenServices;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,6 +35,10 @@ import java.security.Principal;
 @Api(tags = "oathu")
 public class UserController {
 
+
+	@Autowired
+	private UserServiceFeign userServiceFeign;
+
     @Autowired
     private ConsumerTokenServices consumerTokenServices;
 
@@ -33,13 +47,17 @@ public class UserController {
     @RequestMapping(value = "/current", method = RequestMethod.GET)
     @ApiOperation(value = "获取token",notes = "获取当前token")
     public Principal getUser(Principal principal) {
-        return principal;
+
+	    System.out.println("====获取token");
+    	return principal;
     }
 
     @RequestMapping(value = "/test", method = RequestMethod.GET)
     @ApiOperation(value = "获取token",notes = "获取当前token")
-    public String test() {
-        return "ok";
+    public ApiResponse test() {
+    	//UserVo userVo = userServiceFeign.getUser(1L);
+
+    	return userServiceFeign.test2();
     }
 
     @DeleteMapping("/logout")
@@ -52,4 +70,7 @@ public class UserController {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         System.out.println(bCryptPasswordEncoder.encode("cloud"));
     }
+
+
+
 }

@@ -47,7 +47,7 @@ public class BootOAuth2WebResponseExceptionTranslator implements WebResponseExce
         ase = (AccessDeniedException) throwableAnalyzer
                 .getFirstThrowableOfType(AccessDeniedException.class, causeChain);
         if (ase instanceof AccessDeniedException) {
-            log.error("access_denied",e);
+            log.error("access_denied222222",e);
             return handleOAuth2Exception(new BootOAuth2WebResponseExceptionTranslator.ForbiddenException(ase.getMessage(), ase));
         }
 

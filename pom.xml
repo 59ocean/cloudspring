@@ -23,6 +23,7 @@
         <module>cloud-zuul</module>
         <module>cloud-cms</module>
         <module>cloud-order</module>
+        <module>cloud-gateway</module>
         <module>fastdfs</module>
     </modules>
     <repositories>

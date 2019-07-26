@@ -1,0 +1,35 @@
+#hystrix.command.fallbackcmd.execution.isolation.thread.timeoutInMilliseconds: 5000
+server:
+  port: 8091
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://106.14.116.177:8001/eureka/
+  instance:
+    hostname: ${spring.cloud.client.ip-address}
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    prefer-ip-address: true
+    status-page-url: http://${spring.cloud.client.ip-address}:${server.port}/swagger-ui.html # ${server.port}为该服务的端口号
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+      - id: user-service
+        uri: http://localhost:8005
+        predicates:
+          - Path=/user/**
+        filters:
+        - StripPrefix= 1
+      - id: cms-service
+        uri: http://localhost:8082
+        predicates:
+        - Path=/cms/**
+        filters:
+        - StripPrefix= 1
+
+
