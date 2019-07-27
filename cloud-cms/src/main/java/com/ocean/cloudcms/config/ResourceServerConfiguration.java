@@ -34,7 +34,7 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        /*http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
                 .and()
                 .authorizeRequests()
                 .antMatchers("/swagger-resources/**","/v2/api-docs","/swagger-resources","/configuration/security", "/oauth/**","/v1/user/findByUsername","/webjars/**","/swagger-ui.html").permitAll()
@@ -56,8 +56,8 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
                 .and()
                 .csrf().disable()
                 // 禁用httpBasic
-                .httpBasic().disable();*/
-	    http
+                .httpBasic().disable();
+	   /* http
 			    .headers().frameOptions().disable()
 			    .and()
 			    .csrf().disable()
@@ -66,7 +66,7 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 			    .and()
 			    .authorizeRequests()
 			    .antMatchers("/swagger-resources/**","/v2/api-docs","/swagger-resources","/configuration/security", "/oauth/**","/v1/user/findByUsername","/webjars/**","/swagger-ui.html").permitAll()
-			    .anyRequest().authenticated();
+			    .anyRequest().authenticated();*/
     }
 
     @Override

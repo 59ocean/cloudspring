@@ -10,6 +10,16 @@ eureka:
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
     prefer-ip-address: true
     status-page-url: http://${spring.cloud.client.ip-address}:${server.port}/swagger-ui.html # ${server.port}为该服务的端口号
+security:
+  oauth2:
+    client:
+      access-token-uri:http://localhost:8090/oauth/token
+      user-authorization-uri: http://localhost:8090/oauth/authorize
+      client-id: cloud
+      client-secret: cloud
+    resource:
+      user-info-uri: http://localhost:8090/users/current
+      prefer-token-info: false
 spring:
   application:
     name: gateway
@@ -26,7 +36,7 @@ spring:
         filters:
         - StripPrefix= 1
       - id: cms-service
-        uri: http://localhost:8082
+        uri: lb://cms-service
         predicates:
         - Path=/cms/**
         filters:

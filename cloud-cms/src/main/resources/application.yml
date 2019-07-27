@@ -76,16 +76,6 @@ spring:
           acknowledge-mode: manual
           max-concurrency: 10
           prefetch: 1
-
-
-
-
-
-
-
-
-
-
 #mybatis
 mybatis-plus:
   mapper-locations: classpath:/mapper/*Mapper.xml
@@ -114,6 +104,7 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
     cache-enabled: false
+
 security:
   oauth2:
     resource:
